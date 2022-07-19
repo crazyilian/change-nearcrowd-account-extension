@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change Nearcrowd Account
 // @description  Simple panel for switching between accounts on nearcrowd.com
-// @version      1.3
+// @version      1.4
 // @author       crazyilian
 // @match        *://nearcrowd.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=nearcrowd.com
@@ -24,10 +24,15 @@ window.allAccountsSet = function(username, key) {
   const accounts = window.allAccounts();
   accounts[username] = key;
   window.localStorage.setItem('allAccounts', JSON.stringify(accounts));
+  window.updateAccountList();
 }
 
 window.chooseAccount = function() {
-  const username = document.getElementById('accountList').value
+  const username = document.getElementById('accountList').value;
+  window.chooseAccountValues(username);
+}
+
+window.chooseAccountValues = function(username) {
   const key = window.allAccounts()[username];
   if (key === undefined) {
     window.localStorage.removeItem('undefined_wallet_auth_key');
@@ -42,13 +47,10 @@ window.chooseAccount = function() {
 window.addAccount = function() {
   const username = document.getElementById('addAccountUsername').value.trim();
   const key = document.getElementById('addAccountKey').value.trim() || undefined;
-  window.addAccountValues(username, key);
-  window.addAccountClose();
-}
-
-window.addAccountValues = function(username, key) {
   window.allAccountsSet(username, key);
-  updateAccountList();
+  window.chooseAccountValues(username);
+  window.updateAccountList();
+  window.addAccountClose();
 }
 
 window.addAccountClose = function() {
@@ -100,7 +102,7 @@ window.addOpenedAccount = function() {
   if (key === null) {
       return;
   }
-  window.addAccountValues(username, key);
+  window.allAccountsSet(username, key);
 }
 
 const start = function() {
