@@ -6,6 +6,7 @@
 // @match        *://nearcrowd.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=nearcrowd.com
 // @grant        none
+// @source       https://github.com/crazyilian/change-nearcrowd-account-extension
 // ==/UserScript==
 
 
