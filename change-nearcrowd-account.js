@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change Nearcrowd Account
 // @description  Simple panel for switching between accounts on nearcrowd.com
-// @version      1.4
+// @version      1.5
 // @author       crazyilian
 // @match        *://nearcrowd.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=nearcrowd.com
@@ -36,10 +36,10 @@ window.chooseAccountValues = function(username) {
   const key = window.allAccounts()[username];
   if (key === undefined) {
     window.localStorage.removeItem('undefined_wallet_auth_key');
-    return;
+  } else {
+    window.localStorage.setItem('undefined_wallet_auth_key', `{"accountId": "${username}"}`);
+    window.localStorage.setItem(`near-api-js:keystore:${username}:mainnet`, key);
   }
-  window.localStorage.setItem('undefined_wallet_auth_key', `{"accountId": "${username}"}`);
-  window.localStorage.setItem(`near-api-js:keystore:${username}:mainnet`, key);
 
   document.getElementById('refreshPageButton').classList.remove('display-none');
 }
@@ -137,3 +137,4 @@ input {
     window.addOpenedAccount();
 }
 start();
+
