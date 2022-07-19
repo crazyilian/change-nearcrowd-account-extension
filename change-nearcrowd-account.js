@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change Nearcrowd Account
 // @description  Simple panel for switching between accounts on nearcrowd.com
-// @version      1.1
+// @version      1.2
 // @author       crazyilian
 // @match        *://nearcrowd.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=nearcrowd.com
@@ -23,7 +23,8 @@ window.allAccounts = function() {
 window.allAccountsSet = function(username, key) {
   const accounts = window.allAccounts();
   accounts[username] = key;
-  window.localStorage.setItem('allAccounts', JSON.stringify(accounts))
+  window.localStorage.setItem('allAccounts', JSON.stringify(accounts));
+  window.localStorage.removeItem('undefined_wallet_auth_key');
 }
 
 window.parseAccount = function() {
