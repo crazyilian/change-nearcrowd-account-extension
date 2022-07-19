@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change Nearcrowd Account
 // @description  Simple panel for switching between accounts on nearcrowd.com
-// @version      1.0
+// @version      1.1
 // @author       crazyilian
 // @match        *://nearcrowd.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=nearcrowd.com
@@ -111,7 +111,7 @@ window.deleteCurrentAccount = function() {
 const start = function() {
     'use strict';
     window.document.body.insertAdjacentHTML('afterbegin', `
-<div style="display: flex; gap: 40px;">
+<div style="display: flex; gap: 40px; align-items: center">
   <div>Аккаунт:
     <select id="accountList" onchange="chooseAccount()"></select>
     <button type="button" id="refreshPageButton" onclick="window.location.reload()" class='display-none'>Обновить</button>
