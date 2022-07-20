@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change Nearcrowd Account
 // @description  Simple panel for switching between accounts on nearcrowd.com
-// @version      1.5
+// @version      1.6
 // @author       crazyilian
 // @match        *://nearcrowd.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=nearcrowd.com
@@ -130,7 +130,7 @@ const start = function() {
 .display-none {
   display: none;
 }
-input {
+#addAccountUsername, #addAccountKey {
   width: 120px;
 }
 </style>` );
